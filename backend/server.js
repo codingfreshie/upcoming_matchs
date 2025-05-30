@@ -21,27 +21,17 @@ let cachedMatches = null;
 let lastFetchTime = 0;
 
 // API route
-var response
-// app.get('/api/matches', async (req, res) => {
-//   try {
-//     response = await axios.request(options);
-//     response.data.events += await axios.request(options2);
-//     console.log(response.data.events[0])
-//     res.json(response.data.events);
-//   } catch (err) {
-//     res.status(500).json({ error: 'Error fetching data' });
-//   }
-// });
+
 app.get('/api/matches', async (req, res) => {
      const now = Date.now();
     if (cachedMatches && now - lastFetchTime < 1000 * 60 * 10) {
         // serve cached data if fetched in the last 10 minutes
-        return res.json(cachedMatches.events);
+        return res.json(cachedMatches);
     }
   try {
     const now = new Date();
-    lastFetchTime = now;
-    console.log(lastFetchTime)
+    
+    // console.log(lastFetchTime)
     let currentMonth = now.getMonth() + 1; // 1-12
     const currentYear = new Date().getFullYear();
 
@@ -74,12 +64,13 @@ app.get('/api/matches', async (req, res) => {
     const allMatches = [...res1.data.events, ...res2.data.events].filter(
       (match) =>
         match.status?.type?.toLowerCase() !== 'finished' &&
-        match.status?.type?.toLowerCase() !== 'cancelled'
+        match.status?.type?.toLowerCase() !== 'canceled'
     );
 
     // Optional: sort by startTimestamp
     allMatches.sort((a, b) => a.startTimestamp - b.startTimestamp);
     cachedMatches = allMatches;
+    lastFetchTime = now;
     
 
     res.json(allMatches);
