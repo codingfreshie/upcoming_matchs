@@ -31,12 +31,10 @@ app.get('/api/matches', async (req, res) => {
   try {
     const now = new Date();
     
-    // console.log(lastFetchTime)
-    let currentMonth = now.getMonth() + 1; // 1-12
+    let currentMonth = now.getMonth() + 1; 
     const currentYear = new Date().getFullYear();
 
 
-    // Format months as two digits (e.g., '04', '12')
     const month1 = currentMonth.toString().padStart(2, '0');
     const month2 = ((currentMonth % 12) + 1).toString().padStart(2, '0');
 
@@ -67,7 +65,6 @@ app.get('/api/matches', async (req, res) => {
         match.status?.type?.toLowerCase() !== 'canceled'
     );
 
-    // Optional: sort by startTimestamp
     allMatches.sort((a, b) => a.startTimestamp - b.startTimestamp);
     cachedMatches = allMatches;
     lastFetchTime = now;

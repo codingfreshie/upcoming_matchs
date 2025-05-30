@@ -6,7 +6,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/matches') // Replace with your real endpoint
+    fetch('http://localhost:5000/api/matches') 
       .then((res) => res.json())
       .then((data) => {
 

@@ -74,9 +74,9 @@ npm run build
 npm run dev
 ```
 
-Frontend runs on [http://localhost:5173/api/matches](http://localhost:5137) by default.
+Frontend runs on [http://localhost:5173/](http://localhost:5137) by default.
 
-Open [http://localhost:5173/api/matches](http://localhost:5173/api/matches) in your browser to view the app.
+Open [http://localhost:5173/](http://localhost:5173/) in your browser to view the app.
 
 ---
 
