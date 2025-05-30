@@ -19,7 +19,7 @@ A full-stack application to fetch and display upcoming sports matches, built wit
 ---
 
 ## Getting Started
-
+- API used rapid api-[https://rapidapi.com/fluis.lacasse/api/basketapi1]
 ### Prerequisites
 
 - Node.js (v14 or above recommended)
